@@ -547,33 +547,28 @@
   </connection>
   <order>
     <hop>
-      <from>Table input RQ</from>
-      <to>Sort rows RQ</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Table input CS</from>
-      <to>Sort rows CS</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows RQ</from>
-      <to>Sorted merge</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows CS</from>
-      <to>Sorted merge</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sorted merge</from>
       <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values</from>
+      <to>String operations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
       <to>Microsoft Excel writer</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Table input RQ</from>
+      <to>Sorted merge</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Table input CS</from>
+      <to>Sorted merge</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -714,7 +709,7 @@
       <field>
         <name>PLNDATDIA</name>
         <type>Date</type>
-        <format>dd/MM/yyyy</format>
+        <format/>
         <title>PLNDATDIA</title>
         <titleStyleCell/>
         <styleCell/>
@@ -725,7 +720,7 @@
       </field>
       <field>
         <name>PLANO</name>
-        <type>BigNumber</type>
+        <type>Integer</type>
         <format/>
         <title>PLANO</title>
         <titleStyleCell/>
@@ -748,8 +743,20 @@
         <hyperlinkField/>
       </field>
       <field>
+        <name>PLANOME</name>
+        <type>String</type>
+        <format/>
+        <title>PLANOME</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+      <field>
         <name>LACVALOR</name>
-        <type>BigNumber</type>
+        <type>Number</type>
         <format/>
         <title>LACVALOR</title>
         <titleStyleCell/>
@@ -808,10 +815,34 @@
         <hyperlinkField/>
       </field>
       <field>
+        <name>NOMECENTROCUSTO</name>
+        <type>String</type>
+        <format/>
+        <title>NOMECENTROCUSTO</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+      <field>
         <name>CODSUBCONTA</name>
         <type>Integer</type>
         <format/>
         <title>CODSUBCONTA</title>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+      <field>
+        <name>NOMESUBCONTA</name>
+        <type>String</type>
+        <format/>
+        <title>NOMESUBCONTA</title>
         <titleStyleCell/>
         <styleCell/>
         <commentField/>
@@ -853,7 +884,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
+      <xloc>656</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -872,57 +903,87 @@
     <fields>
       <field>
         <name>SITE</name>
+        <rename/>
       </field>
       <field>
         <name>PLNCODIGO</name>
+        <rename/>
       </field>
       <field>
         <name>LACNUMLAN</name>
+        <rename/>
       </field>
       <field>
         <name>IDPESSOA</name>
+        <rename/>
       </field>
       <field>
         <name>PLNPLANIL</name>
+        <rename/>
       </field>
       <field>
         <name>PEREXERCICIO</name>
+        <rename/>
       </field>
       <field>
         <name>PERNUMERO</name>
+        <rename/>
       </field>
       <field>
         <name>PLNDATDIA</name>
+        <rename/>
       </field>
       <field>
         <name>PLANO</name>
+        <rename/>
       </field>
       <field>
         <name>PLACONTA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>PLANOME</name>
+        <rename/>
       </field>
       <field>
         <name>LACVALOR</name>
+        <rename/>
       </field>
       <field>
         <name>LACDEBCRE</name>
+        <rename/>
       </field>
       <field>
         <name>NOMEMODULO</name>
+        <rename/>
       </field>
       <field>
         <name>NOMEUSUARIO</name>
+        <rename/>
       </field>
       <field>
         <name>CODCENTROCUSTO</name>
+        <rename/>
+      </field>
+      <field>
+        <name>NOMECENTROCUSTO</name>
+        <rename/>
       </field>
       <field>
         <name>CODSUBCONTA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>NOMESUBCONTA</name>
+        <rename/>
       </field>
       <field>
         <name>LACNUMDOC</name>
+        <rename/>
       </field>
       <field>
         <name>HISTORICO</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -932,6 +993,57 @@
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask>dd/MM/yyyy</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>PEREXERCICIO</name>
+        <rename>PEREXERCICIO</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>PERNUMERO</name>
+        <rename>PERNUMERO</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>LACVALOR</name>
+        <rename>LACVALOR</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>2</precision>
+        <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -952,108 +1064,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
+      <xloc>384</xloc>
       <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows CS</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>PLNCODIGO</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>LACNUMLAN</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows RQ</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>PLNCODIGO</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>LACNUMLAN</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1071,15 +1083,15 @@
     <fields>
       <field>
         <name>SITE</name>
-        <ascending>N</ascending>
+        <ascending>Y</ascending>
       </field>
       <field>
         <name>PLNCODIGO</name>
-        <ascending>N</ascending>
+        <ascending>Y</ascending>
       </field>
       <field>
         <name>LACNUMLAN</name>
-        <ascending>N</ascending>
+        <ascending>Y</ascending>
       </field>
       <field>
         <name>IDPESSOA</name>
@@ -1110,6 +1122,10 @@
         <ascending>N</ascending>
       </field>
       <field>
+        <name>PLANOME</name>
+        <ascending>N</ascending>
+      </field>
+      <field>
         <name>LACVALOR</name>
         <ascending>N</ascending>
       </field>
@@ -1130,7 +1146,15 @@
         <ascending>N</ascending>
       </field>
       <field>
+        <name>NOMECENTROCUSTO</name>
+        <ascending>N</ascending>
+      </field>
+      <field>
         <name>CODSUBCONTA</name>
+        <ascending>N</ascending>
+      </field>
+      <field>
+        <name>NOMESUBCONTA</name>
         <ascending>N</ascending>
       </field>
       <field>
@@ -1151,7 +1175,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
+      <xloc>256</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1178,12 +1202,15 @@
   PL.PLNDATDIA,
   LC.PLANO,
   LC.PLACONTA,
+  PC.PLANOME,
   LC.LACVALOR,
   LC.LACDEBCRE,
   MD.NOMEMODULO,
   US.NOMEUSUARIO,
   LC.CODCENTROCUSTO,
+  CC.NOME AS NOMECENTROCUSTO,
   LC.CODSUBCONTA,
+  SB.NOMESUBCONTA,
   LC.LACNUMDOC,
   LC.LACHIST1
   || ' '
@@ -1199,6 +1226,15 @@ INNER JOIN PLANILHA PL
 ON PL.PLNCODIGO = LC.PLNCODIGO
 INNER JOIN MODULO MD
 ON MD.IDMODULO = LC.IDMODULO
+INNER JOIN PLANOCONTA PC
+ON PC.PLANO     = LC.PLANO
+AND PC.PLACONTA = LC.PLACONTA
+LEFT JOIN CENTCUST CC
+ON CC.IDEMPRESA       = LC.IDPESSOA
+AND CC.CODCENTROCUSTO = LC.CODCENTROCUSTO
+LEFT JOIN SUBCONTA SB
+ON SB.IDPESSOA     = LC.IDPESSOA
+AND SB.CODSUBCONTA = LC.CODSUBCONTA
 LEFT JOIN USUARIOSISTEMA US
 ON US.IDUSUARIO = LC.IDUSUARIOINCLUSAO
 WHERE TRUNC(PL.PLNDATDIA) BETWEEN TO_DATE('01/11/2021', 'DD/MM/YYYY') AND TO_DATE('03/11/2021', 'DD/MM/YYYY')
@@ -1443,6 +1479,29 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '4')</sql>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>PLANOME</name>
+        <length>40</length>
+        <precision>-1</precision>
+        <origin>Table input CS</origin>
+        <comments>PLANOME</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
         <type>BigNumber</type>
         <storagetype>normal</storagetype>
         <name>LACVALOR</name>
@@ -1558,6 +1617,29 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '4')</sql>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>NOMECENTROCUSTO</name>
+        <length>30</length>
+        <precision>-1</precision>
+        <origin>Table input CS</origin>
+        <comments>NOMECENTROCUSTO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
         <type>BigNumber</type>
         <storagetype>normal</storagetype>
         <name>CODSUBCONTA</name>
@@ -1568,6 +1650,29 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '4')</sql>
         <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol/>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>NOMESUBCONTA</name>
+        <length>60</length>
+        <precision>-1</precision>
+        <origin>Table input CS</origin>
+        <comments>NOMESUBCONTA</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1663,12 +1768,15 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '4')</sql>
   PL.PLNDATDIA,
   LC.PLANO,
   LC.PLACONTA,
+  PC.PLANOME,
   LC.LACVALOR,
   LC.LACDEBCRE,
   MD.NOMEMODULO,
   US.NOMEUSUARIO,
   LC.CODCENTROCUSTO,
+  CC.NOME AS NOMECENTROCUSTO,
   LC.CODSUBCONTA,
+  SB.NOMESUBCONTA,
   LC.LACNUMDOC,
   LC.LACHIST1
   || ' '
@@ -1684,6 +1792,15 @@ INNER JOIN PLANILHA PL
 ON PL.PLNCODIGO = LC.PLNCODIGO
 INNER JOIN MODULO MD
 ON MD.IDMODULO = LC.IDMODULO
+INNER JOIN PLANOCONTA PC
+ON PC.PLANO     = LC.PLANO
+AND PC.PLACONTA = LC.PLACONTA
+LEFT JOIN CENTCUST CC
+ON CC.IDEMPRESA       = LC.IDPESSOA
+AND CC.CODCENTROCUSTO = LC.CODCENTROCUSTO
+LEFT JOIN SUBCONTA SB
+ON SB.IDPESSOA     = LC.IDPESSOA
+AND SB.CODSUBCONTA = LC.CODSUBCONTA
 LEFT JOIN USUARIOSISTEMA US
 ON US.IDUSUARIO = LC.IDUSUARIOINCLUSAO
 WHERE TRUNC(PL.PLNDATDIA) BETWEEN TO_DATE('01/11/2021', 'DD/MM/YYYY') AND TO_DATE('03/11/2021', 'DD/MM/YYYY')
@@ -1928,6 +2045,29 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '7')</sql>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>PLANOME</name>
+        <length>40</length>
+        <precision>-1</precision>
+        <origin>Table input RQ</origin>
+        <comments>PLANOME</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
         <type>BigNumber</type>
         <storagetype>normal</storagetype>
         <name>LACVALOR</name>
@@ -2043,6 +2183,29 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '7')</sql>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>NOMECENTROCUSTO</name>
+        <length>30</length>
+        <precision>-1</precision>
+        <origin>Table input RQ</origin>
+        <comments>NOMECENTROCUSTO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
         <type>BigNumber</type>
         <storagetype>normal</storagetype>
         <name>CODSUBCONTA</name>
@@ -2053,6 +2216,29 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '7')</sql>
         <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol/>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>NOMESUBCONTA</name>
+        <length>60</length>
+        <precision>-1</precision>
+        <origin>Table input RQ</origin>
+        <comments>NOMESUBCONTA</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2123,6 +2309,163 @@ AND SUBSTR(TRIM(LC.PLACONTA), 1, 1) IN ('3', '7')</sql>
     <GUI>
       <xloc>48</xloc>
       <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>String operations</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>PLACONTA</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>PLANOME</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>LACDEBCRE</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>NOMEMODULO</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>NOMEUSUARIO</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>CODCENTROCUSTO</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>NOMECENTROCUSTO</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>NOMESUBCONTA</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>LACNUMDOC</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>HISTORICO</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
